@@ -1,244 +1,1073 @@
-<html><head>
-<meta http-equiv="Content-Language" content="en-us">
-<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
-<title>Welcome to BenThompson.com</title>
-<script language="JavaScript" type="text/JavaScript">
-<!--
-function MM_reloadPage(init) {  //reloads the window if Nav4 resized
-  if (init==true) with (navigator) {if ((appName=="Netscape")&&(parseInt(appVersion)==4)) {
-    document.MM_pgW=innerWidth; document.MM_pgH=innerHeight; onresize=MM_reloadPage; }}
-  else if (innerWidth!=document.MM_pgW || innerHeight!=document.MM_pgH) location.reload();
-}
-MM_reloadPage(true);
-//-->
-</script>
+<!DOCTYPE html>
+<html>
+<head>
+    <meta name="disabled-adaptations" content="watch">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <meta name="viewport" content="initial-scale=1">
+    <base>
+    <title>Reader</title>
+
+    <style id="article-content">
+        h1, h2, h3, h4, h5, h6 {
+            font-weight: bold;
+        }
+        h1 {
+            font-size: 1.5em;
+            line-height: 1.4em;
+        }
+        h2 {
+            font-size: 1.43em;
+        }
+        h3 {
+            font-size: 1.25em;
+        }
+        h4, h5, h6 {
+            font-size: 1em;
+            margin: 1em 0;
+        }
+
+        body.watch h1 {
+            font-size: 1.1875rem;
+        }
+        body.watch h2 {
+            font-size: 1.125rem;
+        }
+        body.watch h3 {
+            font-size: 1.0625rem;
+        }
+        body.watch :matches(h4, h5, h6) {
+            font-size: 1rem;
+        }
+
+        h1.title {
+            font-weight: bold;
+            font-size: 1.95552em;
+            line-height: 1.2141em;
+            margin-top: 0;
+            margin-bottom: 0.5em;
+        }
+
+        .subhead {
+            font-weight: normal;
+        }
+
+        .title, .subhead, .metadata {
+            text-align: start;
+            hyphens: manual;
+            display: none;
+        }
+
+        :nth-child(1 of .page) :matches(.title, .subhead, .metadata) {
+            display: block;
+        }
+
+        .subhead {
+            color: rgba(27, 27, 27, 0.65);
+            font-size: 1.46664em;
+            margin-top: -0.35em;
+            line-height: 1.27275em;
+        }
+
+        .metadata {
+            margin-top: -0.75em;
+            margin-bottom: 1.45em;
+        }
+        body.watch .metadata {
+            line-height: 1.3em;
+        }
+
+        .metadata * {
+            font-size: 1em !important;
+            font-weight: normal !important;
+            font-style: normal !important;
+            display: inline !important;
+            margin: 0;
+        }
+
+        .metadata :matches(.byline, .date) {
+            display: inline !important;
+        }
+
+        .metadata :matches(ul, ol, li) {
+            list-style-type: none;
+            -webkit-padding-start: 0;
+        }
+
+        .title + .metadata {
+            margin-top: -0.75em;
+        }
+
+        .subhead + .metadata {
+            margin-top: -0.7em;
+        }
+
+        .page {
+            text-align: start;
+            word-wrap: break-word;
+        }
+        body.watch .page {
+            hyphens: auto;
+        }
+
+        .page.rtl {
+            direction: rtl;
+        }
+
+        a {
+            text-decoration: none;
+        }
+
+        a[href] {
+            color: rgb(65, 110, 210);
+        }
+
+        #article {
+            text-rendering: optimizeLegibility;
+        }
+
+        #article * {
+            /* Scale down anything larger than our view. Max-width maintains aspect ratios on images. */
+            max-width: 100%;
+        }
+
+        #article img {
+            /* By default, images are centered on their own line. */
+            margin: 0.5em auto;
+            display: block;
+            height: auto;
+        }
+
+        #article img.reader-image-tiny {
+            display: inline;
+            margin: 0;
+        }
+
+        #article .leading-image, figure, .auxiliary {
+            margin-bottom: 1.15em;
+        }
+
+        #article .leading-image img {
+            margin: auto;
+            display: block;
+            clear: both;
+        }
+
+        #article .leading-image .credit {
+            margin: 0;
+        }
+
+        #article .leading-image,
+        #article figure {
+            font-size: 0.75em;
+            line-height: 1.5em;
+        }
+
+        body.watch #article .leading-image,
+        body.watch #article figure {
+            font-size: 0.8125rem;
+        }
+
+        #article .leading-image :matches(.caption, .credit),
+        #article figcaption {
+            margin-top: 0.8em;
+            width: 100%;
+        }
+
+        body.watch #article .leading-image :matches(.caption, .credit),
+        body.watch #article figcaption {
+            margin-top: 4px;
+        }
+
+        body.watch #article figure img {
+            margin-bottom: 0;
+        }
+
+        #article figcaption > * {
+            margin-top: 0.25em;
+            margin-bottom: 0.25em;
+        }
+
+        #article :matches(.leading-image, figure) p {
+            margin-top: 0.4em;
+            margin-bottom: 0.4em;
+        }
+
+        #article .leading-image .credit + .caption {
+            margin-top: 0.1em;
+        }
+
+        #article .auxiliary {
+            display: block;
+            clear: both;
+            font-size: 0.75em;
+            line-height: 1.4em;
+            text-align: start;
+        }
+
+        body.watch #article .auxiliary {
+            font-size: 0.9em;
+        }
+
+        #article .pullquote {
+            font-size: 1.42em;
+            line-height: 1.38em;
+            font-weight: 300;
+            font-style: italic;
+        }
+
+        #article .pullquote:not(.float) {
+            margin-top: 1em;
+            margin-bottom: 1em;
+            -webkit-margin-start: 1em;
+            max-width: calc(100% - 1em);
+        }
+
+        #article .auxiliary > *:not(img) {
+            -webkit-margin-start: 0;
+        }
+
+        #article .auxiliary.float img, #article .auxiliary > *:first-child:not(img) {
+            margin: 0;
+        }
+
+        /* If the element immediately after an image is inline, it might bump up against the image. */
+        #article .auxiliary img + * {
+            display: block;
+        }
+
+        #article .auxiliary figcaption {
+            font-size: 100%;
+        }
+
+        #article .auxiliary * {
+            margin-top: 0.5em;
+            margin-bottom: 0.5em;
+        }
+
+        body:not(.watch) #article .float.left {
+            float: left;
+            margin-right: 20px;
+        }
+
+        body:not(.watch) #article .float.right {
+            float: right;
+            margin-left: 20px;
+        }
+
+        body.watch #article .float {
+            width: auto !important;
+        }
+
+        #article .clear {
+            clear: both;
+        }
+
+        #article ul.list-style-type-none,
+        #article ol.list-style-type-none,
+        #article .list-style-type-none > li {
+            list-style-type: none;
+            -webkit-padding-start: 0;
+        }
+
+        #article .page .list-style-type-none.code-block code {
+            white-space: pre-wrap;
+        }
+
+        #article .page div.scrollable {
+            overflow-x: scroll;
+            word-wrap: normal;
+        }
+
+        #article .page div.scrollable table {
+            max-width: none;
+        }
+
+        #article .leading-image, #article figure, #article .auxiliary:not(.pullquote) {
+            font-family: -apple-system-font;
+        }
+
+        #article .leading-image, #article figure, #article .auxiliary, #article .pullquote {
+            color: rgba(0, 0, 0, 0.65);
+        }
+
+        figure {
+            margin: 0;
+        }
+
+        body:not(.watch) figure:not(.float) {
+            margin-top: 1.4em;
+            margin-bottom: 1.4em;
+        }
+
+        hr {
+            background: rgba(0, 0, 0, 0.2);
+            height: 1px;
+            border: 0;
+        }
+
+        pre {
+            font-family: -apple-system-ui-monospaced, Menlo;
+            font-size: 0.87em;
+            line-height: 1.45em;
+        }
+
+        blockquote, q {
+            color: rgba(0, 0, 0, 0.65);
+        }
+
+        blockquote:not(.pullquote) {
+            margin-left: 2px;
+            margin-right: 6px;
+            padding-left: 16px;
+        }
+
+        blockquote:not(.simple):not(.pullquote) {
+            border-left: 3px solid rgba(0, 0, 0, 0.1);
+        }
+
+        q.pullquote {
+            display: block;
+        }
+
+        .pullquote q::before, .pullquote q::after, q.pullquote::before, q.pullquote::after {
+            content: "";
+        }
+
+        /* Collapse excess whitespace. */
+        .page p > p:empty,
+        .page div > p:empty,
+        .page p > div:empty,
+        .page div > div:empty,
+        .page p + br,
+        .page img + br
+        {
+            display: none;
+        }
+
+        .page table {
+            font-size: 0.9em;
+            text-align: start;
+            word-wrap: break-word;
+            border-collapse: collapse;
+        }
+
+        .page table td, .page table th {
+            padding: 0.25em 0.5em;
+            border: 1px solid rgb(216, 216, 216);
+        }
+
+        body.watch .page > * {
+            margin-left: 0;
+            margin-right: 0;
+        }
+
+        body.watch .page ol {
+            padding: 0 0 0 35px;
+        }
+
+        body.watch .page ul {
+            padding: 0 0 0 20px;
+        }
+
+        body.watch .page li {
+            margin: 0.8em 0;
+        }
+
+        body.watch .page blockquote {
+            padding: 0 0 0 8px;
+        }
+
+        .delimiter {
+            margin-left: 0.45em;
+            margin-right: 0.45em;
+            margin-top: 0.07em;
+            padding: 0;
+        }
+        .metadata.singleline .delimiter::after {
+            content: "•";
+        }
+        .metadata:not(.singleline) .delimiter {
+            content: "";
+            display: block !important;
+        }
+
+        .page table th {
+            background-color: rgba(0, 0, 0, 0.025);
+        }
+
+        .page sup, .page sub {
+            line-height: 1;
+            font-size: 0.75em;
+        }
+
+        .hidden {
+            display: none;
+        }
+
+        /* Special Font Customizations */
+        .system { font-family: -apple-system-font; }
+        .watch.system { font: -apple-system-body; }
+        .yuantisc {
+            letter-spacing: 1px;
+        }
+        .yuantitc {
+            letter-spacing: 1px;
+        }
+
+        /* Printing and mailing. */
+        #article.exported {
+            font-size: 1.2em;
+        }
+
+        .exported {
+            line-height: 1.5em;
+        }
+
+        .exported a[href] {
+            text-decoration: underline;
+        }
+
+        #article.exported {
+            margin: 0;
+            padding: 0;
+        }
+
+        .exported .float {
+            float: none;
+            margin-top: 1.4em;
+            margin-bottom: 1.4em;
+        }
+
+        #article.exported .leading-image,
+        #article.exported figcaption {
+            font-size: 0.75rem;
+            color: rgba(0, 0, 0, 0.8);
+        }
+
+        .exported .delimiter::after {
+            content: "";
+        }
+    </style>
+    <style id="print">
+        @media print {
+            body {
+                margin: 2mm 9mm;
+            }
+
+            .original-url {
+                display: none;
+            }
+
+            #article .float.left {
+                float: left !important;
+            }
+
+            #article .float.right {
+                float: right !important;
+            }
+
+            #article .float {
+                margin-top: 0 !important;
+                margin-bottom: 0 !important;
+            }
+        }
+    </style>
+
+    <style id="reader-ui">
+    @media screen {
+        body {
+            margin: 0;
+            padding: 0;
+            -webkit-user-select: none;
+            overflow-x: hidden;
+            -webkit-text-size-adjust: none;
+        }
+        body.mac {
+            background-color: transparent;
+        }
+
+        #article {
+            pointer-events: auto;
+            -webkit-user-select: auto;
+            overflow: visible;
+            margin-bottom: 42vh !important;
+        }
+
+        #article:focus {
+            outline: none;
+        }
+
+        .page-number {
+            display: block;
+        }
+
+        #article :nth-child(1 of .page):nth-last-child(1 of .page) .page-number {
+            display: none;
+        }
+        body.watch #article :nth-child(1 of .page):nth-last-child(1 of .page) {
+            padding-top: 0.15em;
+        }
+
+        .page-number, #incoming-page-corner {
+            font-weight: bold;
+            position: absolute;
+            -webkit-user-select: none;
+            font: 12px "Helvetica Neue";
+            color: rgb(168, 168, 168);
+            cursor: default;
+        }
+        body.watch :matches(.page-number, #incoming-page-corner) {
+            top: 8px;
+            right: 16px;
+        }
+
+        .page {
+            margin-left: auto;
+            margin-right: auto;
+            padding-top: 35px;
+            padding-bottom: 35px;
+            position: relative;
+            border-top: 1px solid rgba(0, 0, 0, 0.2);
+        }
+        body.watch .page {
+            padding: 0 4px;
+        }
+
+        #article :nth-child(1 of .page) {
+            margin-top: 0;
+            border-top: none;
+            padding-top: 32px;
+        }
+
+        .page:last-of-type {
+            padding-bottom: 45px;
+        }
+
+        .page video {
+            height: auto;
+            position: relative;
+        }
+
+        #incoming-page-placeholder {
+            height: 30px;
+            margin-bottom: 0;
+        }
+
+        #incoming-page-corner {
+            position: absolute;
+            right: 10px;
+            top: 8px;
+        }
+
+        #incoming-page-text {
+            float: right;
+            -webkit-user-select: none;
+        }
+
+        #next-page-container {
+            position:absolute;
+            /* Workaround for <rdar://problem/8662842> iOS Reader: loading multiple pages stops at the 2nd page. */
+            left: -1000px;
+            /* The iframe needs to be wider than the width threshold value for Reader detection, see <rdar://problem/9599297>. */
+            width: 320px;
+            height: 0px;
+        }
+
+        .page div.scrollable {
+            -webkit-overflow-scrolling: touch;
+        }
+    }
+
+    @media screen and (-webkit-min-device-pixel-ratio:2) {
+        .page {
+            border-top-width: 0.5px;
+        }
+
+        hr {
+            height: 0.5px;
+        }
+    }
+
+    #article .extendsBeyondTextColumn {
+        max-width: none;
+    }
+
+    .iframe-wrapper {
+        background-color: black;
+        max-width: none;
+        text-align: center;
+    }
+
+    iframe {
+        border: 0;
+    }
+
+    @media screen and (min-width: 0px) {
+        /* Includes iPhone 5 in portrait */
+        .page { padding-left: 16px; padding-right: 16px; }
+        .page-number, #incoming-page-corner {
+            top: 8px;
+            right: 16px;
+        }
+        #article :nth-child(1 of .page):nth-last-child(1 of .page) {
+            padding-top: 14px;
+        }
+    }
+
+    @media screen and (min-width: 161px) {
+        /* Apple Watch 40mm */
+        body.watch .page {
+            padding: 0 8.5px;
+        }
+    }
+
+    @media screen and (min-width: 183px) {
+        /* Apple Watch 44mm */
+        body.watch .page {
+            padding: 0 9.5px;
+        }
+    }
+
+    @media screen and (min-width: 375px) {
+        /* iPhone 6 in portrait */
+        .page { padding-left: 18px; padding-right: 18px; }
+        .page-number, #incoming-page-corner {
+            top: 6px;
+            right: 18px;
+        }
+        #article :nth-child(1 of .page):nth-last-child(1 of .page) {
+            padding-top: 16px;
+        }
+    }
+
+    @media screen and (min-width: 414px) {
+        /* iPhone 6 Plus in portrait */
+        .page { padding-left: 20px; padding-right: 20px; }
+        .page-number, #incoming-page-corner {
+            top: 6px;
+            right: 20px;
+        }
+        #article :nth-child(1 of .page):nth-last-child(1 of .page) {
+            padding-top: 18px;
+        }
+    }
+
+    /* iPhone 5 in landscape (568px) */
+
+    @media screen and (min-width: 667px) {
+        /* iPhone 6 in landscape */
+        .page { padding-left: 40px; padding-right: 40px; }
+        .page-number, #incoming-page-corner {
+            /* Stop lining this text up with .page's right margin. */
+            top: 10px;
+            right: 10px;
+        }
+        #article :nth-child(1 of .page):nth-last-child(1 of .page) {
+            padding-top: 26px;
+        }
+    }
+
+    @media screen and (max-width: 569px) {
+        /* iPhone 5 in landscape (568px) and smaller, including all iPhones in portrait */
+        h1.title {
+            font-size: 1.5558em;
+        }
+        h1 {
+            font-size: 1.4em;
+        }
+        h2 {
+            font-size: 1.2777em;
+        }
+        h3 {
+            font-size: 1.15em;
+        }
+        .subhead {
+            font-size: 1.2222em;
+        }
+        .metadata {
+            font-size: 0.9em;
+            line-height: 1.6em;
+        }
+        .title + .metadata {
+            margin-top: -0.65em;
+        }
+    }
+
+    @media screen and (min-width: 704px) {
+        /* iPad in landscape with the sidebar open */
+        .page { padding-left: 42px; padding-right: 42px; }
+    }
+
+    @media screen and (min-width: 736px) {
+        /* iPhone 6 Plus in landscape */
+        .page { padding-left: 60px; padding-right: 60px; }
+        #article :nth-child(1 of .page):nth-last-child(1 of .page) {
+            padding-top: 46px;
+        }
+    }
+
+    @media only screen and (min-width: 780px) {
+        #article {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        /* Readable margins. */
+        body.system #article { max-width: 83.2ex; }
+        body.athelas #article { max-width: 104ex; }
+        body.charter #article { max-width: 86ex; }
+        body.georgia #article { max-width: 94ex; }
+        body.iowanoldstyle #article { max-width: 90ex; }
+        body.palatino #article { max-width: 97ex; }
+        body.seravek #article { max-width: 87ex; }
+        body.timesnewroman #article { max-width: 97ex; }
+        body.uiserif #article { max-width: 93ex; }
+
+        :matches(body.pingfangsc, body.pingfangtc) #article { max-width: 87.6ex; }
+        :matches(body.heitisc, body.heititc) #article { max-width: 74.8ex; }
+        :matches(body.songtisc, body.songtitc) #article { max-width: 102ex; }
+        :matches(body.kaitisc, body.kaititc) #article { max-width: 102ex; }
+        :matches(body.yuantisc, body.yuantitc) #article { max-width: 86.2ex; }
+        :matches(body.libiansc, body.libiantc) #article { max-width: 95ex; }
+        :matches(body.weibeisc, body.weibeitc) #article { max-width: 99ex; }
+        :matches(body.yuppysc, body.yuppytc) #article { max-width: 87.6ex; }
+
+        body.hiraginosansw3 #article { max-width: 75.7ex; }
+        body.hiraginokakugothicpron #article { max-width: 76.4ex; }
+        body.hiraginominchopron #article { max-width: 77.5ex; }
+        body.hiraginomarugothicpron #article { max-width: 75.1ex; }
+
+        body.applesdgothicneo #article { max-width: 82ex; }
+        body.nanumgothic #article { max-width: 88.6ex; }
+        body.nanummyeongjo #article { max-width: 94.1ex; }
+
+        .page {
+            /* We don't want the lines seperating pages to extend beyond the primary text column. */
+            padding-left: 0px;
+            padding-right: 0px;
+            margin-left: 70px;
+            margin-right: 70px;
+        }
+    }
+
+    #article {
+        -webkit-font-smoothing: subpixel-antialiased;
+    }
+
+    /* Reader's paper appearance. */
+    html.paper {
+        height: 100%;
+    }
+
+    html.paper body {
+        height: calc(100% - 44px);
+    }
+
+    html.paper body:after {
+        content: "";
+        height: 22px;
+        display: block;
+    }
+
+    /* Clearfix */
+    html.paper .page::after {
+        content: "";
+        display: table;
+        clear: both;
+    }
+
+    html.paper #article {
+        min-height: 100%;
+        margin: 22px auto 0 auto;
+    }
+
+    html.paper #article :nth-child(1 of .page), html.paper #article :nth-child(1 of .page):nth-last-child(1 of .page) {
+        padding-top: 53px;
+    }
+
+    html.paper #article .page-number, html.paper #article #incoming-page-corner {
+        /* Stop lining this text up with .page's right margin. */
+        top: 14px;
+        right: 0px;
+    }
+    /* End Reader's paper appearance. */
+
+    /* Use slightly smaller page padding when vertically constrained. */
+    @media screen and (max-height: 700px) {
+        .page {
+            padding-top: 32px;
+            padding-bottom: 32px;
+        }
+    }
+
+    </style>
+
+    <style id="theming">
+        body.white {
+            --body-font-color: rgb(27, 27, 27);
+            --horizontal-line-color: rgb(220, 220, 220);
+            --paper-shadow-color: rgba(0, 0, 0, 0.2);
+        }
+        body.sepia {
+            --body-font-color: rgb(79, 50, 28);
+            --horizontal-line-color: rgb(230, 218, 201);
+            --paper-shadow-color: rgba(0, 0, 0, 0.2);
+        }
+        body.gray {
+            --body-font-color: rgba(255, 255, 255, 0.78);
+            --horizontal-line-color: rgb(111, 111, 111);
+        }
+        body.night {
+            --body-font-color: rgb(176, 176, 176);
+            --horizontal-line-color: rgb(62, 62, 62);
+        }
+        body.night.oled {
+            --body-font-color: rgb(210, 210, 210);
+            --horizontal-line-color: rgba(210, 210, 210, 0.35);
+        }
+        body.watch.night.oled {
+            --body-font-color: rgb(174, 180, 191);
+        }
+
+        html:not(.paper) body.white, body.white #article {
+            background-color: white;
+        }
+        html:not(.paper) body.sepia, body.sepia #article {
+            background-color: rgb(248, 241, 227);
+        }
+        html:not(.paper) body.gray, body.gray #article {
+            background-color: rgb(74, 74, 77);
+        }
+        html:not(.paper) body.night, body.night #article {
+            background-color: rgb(18, 18, 18);
+        }
+        html:not(.paper) body.night.oled, body.night.oled #article {
+            background-color: black;
+        }
+
+        /* OS X Reader draws backdrop background colors outside of web content, so the follow set only applies to iOS. */
+        html.paper body.ios.white {
+            background-color: rgb(230, 230, 230);
+        }
+        html.paper body.ios.sepia {
+            background-color: rgb(224, 216, 200);
+        }
+        html.paper body.ios.gray {
+            background-color: rgb(50, 50, 51);
+        }
+        html.paper body.ios.night {
+            background-color: black;
+        }
+
+        body.watch.night .metadata * {
+            color: rgb(214, 217, 223) !important;
+        }
+
+        html.paper body.white #article, html.paper body.sepia #article {
+            box-shadow: 0px 6px 12px 3px var(--paper-shadow-color);
+        }
+        html.paper body.gray #article {
+            box-shadow: 0px 6px 12px 3px rgba(0, 0, 0, 0.24);
+        }
+        html.paper body.night #article {
+            outline: 1px solid #272727;
+        }
+
+        body.watch.night.oled :matches(h1, h2, h3, h4, h5, h6) {
+            color: white;
+        }
+
+        body.sepia #article :matches(.leading-image, figure, .auxiliary, .pullquote) {
+            color: rgba(79, 50, 28, 0.9);
+        }
+        body.gray #article :matches(.leading-image, figure, .auxiliary, .pullquote) {
+            color: rgba(255, 255, 255, 0.7);
+        }
+        body.night #article :matches(.leading-image, figure, .auxiliary, .pullquote) {
+            color: rgba(255, 255, 255, 0.67);
+        }
+        body.night.oled #article :matches(.leading-image, figure, .auxiliary, .pullquote) {
+            color: rgba(210, 210, 210, 0.9);
+        }
+
+        body.sepia #article a[href] {
+            color: rgb(209, 150, 0);
+        }
+        body.gray #article a[href], body.night #article a[href] {
+            color: rgb(90, 200, 250);
+        }
+        body.watch.night.oled #article a[href] {
+            color: rgb(32, 148, 250);
+        }
+
+        body #article :matches(.page, .metadata a[href]) {
+            color: var(--body-font-color);
+        }
+        body #article .page {
+            border-top-color: var(--horizontal-line-color);
+        }
+        body #article hr {
+            background: var(--horizontal-line-color);
+        }
+
+        body.sepia .subhead {
+            color: rgba(79, 50, 28, 0.72);
+        }
+        body.gray .subhead {
+            color: rgba(255, 255, 255, 0.65);
+        }
+        body.night .subhead {
+            color: rgba(185, 185, 185, 0.9);
+        }
+        body.night.oled .subhead {
+            color: rgba(210, 210, 210, 0.85);
+        }
+
+        body.sepia :matches(#article .page-number, #incoming-page-corner) {
+            color: rgba(63, 41, 23, 0.5);
+        }
+        body.gray :matches(#article .page-number, #incoming-page-corner) {
+            color: rgba(255, 255, 255, 0.45);
+        }
+        body.night :matches(#article .page-number, #incoming-page-corner) {
+            color: rgba(255, 255, 255, 0.55);
+        }
+        body.night.oled :matches(#article .page-number, #incoming-page-corner) {
+            color: rgba(210, 210, 210, 0.8);
+        }
+
+        body.sepia #article blockquote, body.sepia #article q {
+            color: rgb(140, 112, 79);
+        }
+        body.sepia #article blockquote:not(.simple):not(.pullquote) {
+            border-left-color: rgba(154, 128, 92, 0.1);
+        }
+        body.gray #article blockquote, body.gray #article q {
+            color: rgba(255, 255, 255, 0.6);
+        }
+        body.gray #article blockquote:not(.simple):not(.pullquote) {
+            border-left-color: rgba(255, 255, 255, 0.15);
+        }
+        body.night #article blockquote, body.night #article q {
+            color: rgba(255, 255, 255, 0.6);
+        }
+        body.night #article blockquote:not(.simple):not(.pullquote) {
+            border-left-color: rgba(255, 255, 255, 0.15);
+        }
+        body.night.oled #article blockquote, body.night.oled #article q {
+            color: rgba(210, 210, 210, 0.85);
+        }
+        body.night.oled #article blockquote:not(.simple):not(.pullquote) {
+            border-left-color: rgba(210, 210, 210, 0.2);
+        }
+        body.watch.night #article blockquote, body.watch.night #article q {
+            color: var(--body-font-color);
+        }
+        body.watch.night #article blockquote:not(.simple):not(.pullquote) {
+            border-left-color: rgb(51, 51, 51);
+        }
+
+        body.sepia table :matches(td, th) {
+            border-color: rgb(230, 218, 202);
+        }
+        body.sepia table th {
+            background-color: rgba(154, 128, 92, 0.06);
+        }
+        body.gray table :matches(td, th) {
+            border-color: rgb(106, 106, 106);
+        }
+        body.gray table th {
+            background-color: rgba(255, 255, 255, 0.035);
+        }
+        body.night table :matches(td, th) {
+            border-color: rgb(50, 50, 50);
+        }
+        body.night table th {
+            background-color: rgba(255, 255, 255, 0.045);
+        }
+        body.night.oled table th {
+            background-color: rgba(255, 255, 255, 0.075);
+        }
+
+        @media (inverted-colors) {
+            /* If the user has turned on the "smart invert" accessibility preference, they generally prefer
+               their images, such as photos, to not be inverted. Provide this by applying a filter that
+               inverts the colors again (effectively un-inverting). */
+            body:not(.gray):not(.night) #article :matches(img, video) {
+                filter: invert();
+            }
+            body:not(.gray):not(.night) #article picture {
+                filter: none !important;
+            }
+            body.gray, body.night {
+                filter: invert();
+            }
+            body:matches(.gray, .night) #article :matches(img:not(picture > img), picture, video) {
+                filter: none !important;
+            }
+            body:matches(.gray, .night) #article iframe {
+                filter: invert();
+            }
+            html.paper body.white #article, html.paper body.sepia #article {
+                --paper-shadow-color: rgba(255, 255, 255, 0.2);
+            }
+            /* The background color of <body> is not inverted by the filter. Achieve this by manually
+               setting the inverse color. */
+            html:not(.paper) body.gray {
+                background-color: rgb(165, 165, 163) !important;
+            }
+            html.paper body.gray {
+                background-color: rgb(205, 205, 204) !important;
+            }
+            html:not(.paper) body.night {
+                background-color: rgb(237, 237, 237) !important;
+            }
+            html:not(.paper) body.night.oled {
+                background-color: white !important;
+            }
+            html.paper body.night {
+                background-color: white !important;
+            }
+        }
+    </style>
+
+    <style id="locale-specific-adjustments">
+        .locale-ja .page {
+            text-align: justify;
+        }
+
+        .locale-zh-Hans .page {
+            text-align: justify;
+        }
+
+        .locale-zh-Hant .page {
+            text-align: justify;
+            word-break: break-all;
+        }
+
+        .locale-hi .title {
+            line-height: 1.65em;
+        }
+
+        /* See 32728279 and 54061051. */
+        .locale-ur.notonastaliqurdu :matches(h1, h2, h3, h4, h5, h6) {
+            font-weight: normal;
+            line-height: 2.55em;
+        }
+    </style>
+
+    <style id="dynamic-article-content"></style>
+
+    <!-- For Twitter’s script to find and script world to be created (see 34937240). -->
+    <script>
+        window.isReaderPage = true;
+    </script>
 </head>
+<body>
+    <iframe aria-hidden="true" id="next-page-container"></iframe>
+    <div id="article" role="article">
+        <!-- This node will contain a number of div.page. -->
+    </div>
+</body>
+</html>
 
-<body background="../Graphics/mainindex/scuba_samantha_sld_me.jpg">
-
-<p align="center"><img border="0" src="../Graphics/mainindex/logobar.jpg" width="846" height="70"></p>
-<table width="839" border="0" align="center" height="72">
-  <tbody><tr>
-    <td width="833" height="52" align="center" valign="top">
-	<font color="#000099" style="font-size: 34pt"><strong>Welcome to Marcelo's Website</strong></font><font style="font-size: 34pt">
-	</font> </td>
-  </tr>
-  <tr>
-    <td height="14" align="center" valign="top"><div align="right"><font size="-7" face="Times New Roman, Times, serif">
-		<a href="../siteupdates.htm">View Latest Updates</a> </font></div></td>
-  </tr>
-</tbody></table>
-<table width="844" border="0" align="center">
-  <tbody><tr>
-    <td width="116" height="416" valign="top"><table width="116" height="395" border="0" bordercolor="#000000">
-      <tbody><tr>
-        <td width="106" height="391" valign="top"><p align="center"><img src="../Graphics/mainindex/index_md_clr.gif" width="90" height="80"></p>
-          <p align="center">
-            <object classid="clsid:D27CDB6E-AE6D-11cf-96B8-444553540000" codebase="http://download.macromedia.com/pub/shockwave/cabs/flash/swflash.cab#version=5,0,0,0" width="100" height="22">
-                <param name="movie" value="Webpages/picturesbutton.swf">
-                <param name="quality" value="High">
-                <embed src="Webpages/picturesbutton.swf" quality="High" pluginspage="http://www.macromedia.com/shockwave/download/index.cgi?P1_Prod_Version=ShockwaveFlash" type="application/x-shockwave-flash" width="100" height="22">
-              </object>
-          </p>          <p>
-            <object classid="clsid:D27CDB6E-AE6D-11cf-96B8-444553540000" codebase="http://download.macromedia.com/pub/shockwave/cabs/flash/swflash.cab#version=5,0,0,0" width="100" height="22">
-              <param name="movie" value="Webpages/videosbutton.swf">
-              <param name="quality" value="High">
-              <embed src="Webpages/videosbutton.swf" quality="High" pluginspage="http://www.macromedia.com/shockwave/download/index.cgi?P1_Prod_Version=ShockwaveFlash" type="application/x-shockwave-flash" width="100" height="22">
-            </object>
-          </p>
-          <p>
-            <object classid="clsid:D27CDB6E-AE6D-11cf-96B8-444553540000" codebase="http://download.macromedia.com/pub/shockwave/cabs/flash/swflash.cab#version=5,0,0,0" width="100" height="22">
-              <param name="movie" value="Webpages/travelbutton.swf">
-              <param name="quality" value="High">
-              <embed src="Webpages/travelbutton.swf" quality="High" pluginspage="http://www.macromedia.com/shockwave/download/index.cgi?P1_Prod_Version=ShockwaveFlash" type="application/x-shockwave-flash" width="100" height="22">
-            </object>
-          </p>
-          <p>
-            <object classid="clsid:D27CDB6E-AE6D-11cf-96B8-444553540000" codebase="http://download.macromedia.com/pub/shockwave/cabs/flash/swflash.cab#version=5,0,0,0" width="100" height="22">
-              <param name="movie" value="Webpages/musicbutton.swf">
-              <param name="quality" value="High">
-              <embed src="Webpages/musicbutton.swf" quality="High" pluginspage="http://www.macromedia.com/shockwave/download/index.cgi?P1_Prod_Version=ShockwaveFlash" type="application/x-shockwave-flash" width="100" height="22">
-            </object>
-</p>
-          <p>
-            <object classid="clsid:D27CDB6E-AE6D-11cf-96B8-444553540000" codebase="http://download.macromedia.com/pub/shockwave/cabs/flash/swflash.cab#version=5,0,0,0" width="100" height="22">
-              <param name="movie" value="Webpages/interestsbutton.swf">
-              <param name="quality" value="High">
-              <embed src="Webpages/interestsbutton.swf" quality="High" pluginspage="http://www.macromedia.com/shockwave/download/index.cgi?P1_Prod_Version=ShockwaveFlash" type="application/x-shockwave-flash" width="100" height="22">
-            </object>
-          </p>
-          <p>              
-            <object classid="clsid:D27CDB6E-AE6D-11cf-96B8-444553540000" codebase="http://download.macromedia.com/pub/shockwave/cabs/flash/swflash.cab#version=5,0,0,0" width="100" height="22">
-              <param name="movie" value="Webpages/resumebutton.swf">
-              <param name="quality" value="High">
-              <embed src="Webpages/resumebutton.swf" quality="High" pluginspage="http://www.macromedia.com/shockwave/download/index.cgi?P1_Prod_Version=ShockwaveFlash" type="application/x-shockwave-flash" width="100" height="22">
-            </object>
-          </p>          
-          <p>
-            <object classid="clsid:D27CDB6E-AE6D-11cf-96B8-444553540000" codebase="http://download.macromedia.com/pub/shockwave/cabs/flash/swflash.cab#version=5,0,0,0" width="100" height="22">
-              <param name="movie" value="Webpages/linksbutton.swf">
-              <param name="quality" value="High">
-              <embed src="Webpages/linksbutton.swf" quality="High" pluginspage="http://www.macromedia.com/shockwave/download/index.cgi?P1_Prod_Version=ShockwaveFlash" type="application/x-shockwave-flash" width="100" height="22">
-            </object>
-          </p>
-          <p>              
-            <object classid="clsid:D27CDB6E-AE6D-11cf-96B8-444553540000" codebase="http://download.macromedia.com/pub/shockwave/cabs/flash/swflash.cab#version=5,0,0,0" width="100" height="22">
-              <param name="movie" value="Webpages/contactbutton.swf">
-              <param name="quality" value="High">
-              <embed src="Webpages/contactbutton.swf" quality="High" pluginspage="http://www.macromedia.com/shockwave/download/index.cgi?P1_Prod_Version=ShockwaveFlash" type="application/x-shockwave-flash" width="100" height="22">
-            </object>
-          </p>          </td>
-      </tr>
-    </tbody></table></td>
-    <td width="430" valign="top"><table width="429" height="180" border="0">
-      <tbody><tr>
-        <td height="115" valign="top"><p><font face="Times New Roman, Times, serif"><strong>A message from Ben: </strong>Thank you for visiting BenThompson.com. It will be under construction for quite a while as I build it, however, check back often as new updates will be made daily. You will be able to see lots of pictures, videos, and additional goodies as the site grows. Please send me comments via the contact section.&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </font></p>          </td>
-      </tr>
-      <tr>
-        <td height="59" valign="top"><b><font color="#FF0000">Update: </font>
-		</b>&nbsp;I saw a tornado from my condo Saturday night!&nbsp; Below is a 
-		picture of the tornado taken by someone else in my building.&nbsp; Click 
-		on the pic to go to the news story about it.</td>
-      </tr>
-    </tbody></table>      <p align="center">
-	<a target="_blank" href="http://www.nbc6.net/weather/4958181/detail.html">
-	<img border="0" src="Pictures/tornado2.jpg" width="208" height="153"></a></p>
-	</td>
-    <td width="280" valign="top">
-	<table width="280" border="1" bordercolor="#000080" cellspacing="0" cellpadding="0" height="117">
-      <tbody><tr>
-        <td width="176" height="26" style="border-left-style: solid; border-left-width: 1px; border-right-style: none; border-right-width: medium; border-top-style: solid; border-top-width: 1px; border-bottom-style: none; border-bottom-width: medium" valign="top"><p align="center">
-		<i><strong>About Me:</strong></i></p></td>
-        <td width="88" style="border-left-style: none; border-left-width: medium; border-right-style:solid; border-right-width:1px; border-top-style:solid; border-top-width:1px; border-bottom-style:solid; border-bottom-width:1px" rowspan="7">
-		<b><img src="../Graphics/mainindex/mypic.jpg" width="78" height="94" align="middle"></b></td>
-      </tr>
-      <tr>
-        <td width="176" height="15" style="border-left-style: solid; border-left-width: 1px; border-right-style: solid; border-right-width: 1px; border-top-style: none; border-top-width: medium; border-bottom-style: none; border-bottom-width: medium" valign="top" bordercolor="#000080" bordercolordark="#000099" bordercolorlight="#000080">
-		<b><font size="2">Name:&nbsp;</font><font size="2" color="#000080">&nbsp;&nbsp;&nbsp;&nbsp; Ben Thompson</font></b></td>
-      </tr>
-      <tr>
-        <td width="176" height="15" style="border-left-style: solid; border-left-width: 1px; border-right-style: solid; border-right-width: 1px; border-top-style: none; border-top-width: medium; border-bottom-style: none; border-bottom-width: medium" valign="top" bordercolordark="#000099" bordercolorlight="#000080">
-		<b><font size="2">Location: </font>
-		<font size="2" color="#000080">Miami, FL USA</font></b></td>
-      </tr>
-      <tr>
-        <td width="176" height="8" style="border-left-style: solid; border-left-width: 1px; border-right-style: solid; border-right-width: 1px; border-top-style: none; border-top-width: medium; border-bottom-style: none; border-bottom-width: medium" valign="top" bordercolordark="#000099" bordercolorlight="#000080">
-		<b><font size="2">Age: </font><font size="2" color="#000080">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 26</font></b></td>
-      </tr>
-      <tr>
-        <td width="176" height="16" style="border-left-style: solid; border-left-width: 1px; border-right-style: solid; border-right-width: 1px; border-top-style: none; border-top-width: medium; border-bottom-style: none; border-bottom-width: medium" valign="top" bordercolordark="#000099" bordercolorlight="#000080">
-		<b><font size="2">Height:&nbsp;&nbsp;&nbsp; 
-		<font color="#000080">6'4&nbsp;</font>Weight:
-		<font color="#000080">&nbsp;190</font></font></b></td>
-      </tr>
-      <tr>
-        <td width="176" height="5" style="border-left-style: solid; border-left-width: 1px; border-right-style: solid; border-right-width: 1px; border-top-style: none; border-top-width: medium; border-bottom-style: none; border-bottom-width: medium" valign="top" bordercolor="#000080" bordercolordark="#000099" bordercolorlight="#000080">
-		<span style="font-size: 4pt; font-weight:700">a</span></td>
-      </tr>
-      <tr>
-        <td width="176" height="23" style="border-left-style: solid; border-left-width: 1px; border-right-style: solid; border-right-width: 1px; border-top-style: none; border-top-width: medium; border-bottom-style: solid; border-bottom-width: 1px" valign="top" bordercolordark="#000099" bordercolorlight="#000080">
-		<p align="center"><b><font size="2"><a href="../profile.htm">View my complete profile</a></font></b></p></td>
-      </tr>
-    </tbody></table>      
-      <table width="280" border="1" bordercolor="#000080" cellspacing="0" cellpadding="0" height="253">
-        <tbody><tr>
-          <td width="276" height="251"><p align="center"><font color="#FF0000"><strong>Picture of the Day</strong></font> </p>
-          <p align="center">
-			<img src="../Pictures/Picoftheday/9_10_05spiralmilkyway.jpg" width="228" height="155"> <font size="1" face="Geneva, Arial, Helvetica, sans-serif"> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Milky Way:From a vantage point that viewed our galaxy face-on, astronomers in distant galaxies would likely see a striking barred spiral galaxy suggested in this artist's illustration. (Courtesy of <a href="http://antwrp.gsfc.nasa.gov/apod/archivepix.html" target="_blank">Astronomy Archive)</a></font></p>          </td>
-        </tr>
-      </tbody></table>      </td>
-    <td width="2" valign="top">&nbsp;</td>
-  </tr>
-</tbody></table>
-
-
-
-</body></html>
-
-    <td height="14" align="center" valign="top"><div align="right"><font size="-7" face="Times New Roman, Times, serif">
-		<a href="../siteupdates.htm">View Latest Updates</a> </font></div></td>
-  </tr>
-</tbody></table>
-<table width="844" border="0" align="center">
-  <tbody><tr>
-    <td width="116" height="416" valign="top"><table width="116" height="395" border="0" bordercolor="#000000">
-      <tbody><tr>
-        <td width="106" height="391" valign="top"><p align="center"><img src="../Graphics/mainindex/index_md_clr.gif" width="90" height="80"></p>
-          <p align="center">
-            <object classid="clsid:D27CDB6E-AE6D-11cf-96B8-444553540000" codebase="http://download.macromedia.com/pub/shockwave/cabs/flash/swflash.cab#version=5,0,0,0" width="100" height="22">
-                <param name="movie" value="Webpages/picturesbutton.swf">
-                <param name="quality" value="High">
-                <embed src="Webpages/picturesbutton.swf" quality="High" pluginspage="http://www.macromedia.com/shockwave/download/index.cgi?P1_Prod_Version=ShockwaveFlash" type="application/x-shockwave-flash" width="100" height="22">
-              </object>
-          </p>          <p>
-            <object classid="clsid:D27CDB6E-AE6D-11cf-96B8-444553540000" codebase="http://download.macromedia.com/pub/shockwave/cabs/flash/swflash.cab#version=5,0,0,0" width="100" height="22">
-              <param name="movie" value="Webpages/videosbutton.swf">
-              <param name="quality" value="High">
-              <embed src="Webpages/videosbutton.swf" quality="High" pluginspage="http://www.macromedia.com/shockwave/download/index.cgi?P1_Prod_Version=ShockwaveFlash" type="application/x-shockwave-flash" width="100" height="22">
-            </object>
-          </p>
-          <p>
-            <object classid="clsid:D27CDB6E-AE6D-11cf-96B8-444553540000" codebase="http://download.macromedia.com/pub/shockwave/cabs/flash/swflash.cab#version=5,0,0,0" width="100" height="22">
-              <param name="movie" value="Webpages/travelbutton.swf">
-              <param name="quality" value="High">
-              <embed src="Webpages/travelbutton.swf" quality="High" pluginspage="http://www.macromedia.com/shockwave/download/index.cgi?P1_Prod_Version=ShockwaveFlash" type="application/x-shockwave-flash" width="100" height="22">
-            </object>
-          </p>
-          <p>
-            <object classid="clsid:D27CDB6E-AE6D-11cf-96B8-444553540000" codebase="http://download.macromedia.com/pub/shockwave/cabs/flash/swflash.cab#version=5,0,0,0" width="100" height="22">
-              <param name="movie" value="Webpages/musicbutton.swf">
-              <param name="quality" value="High">
-              <embed src="Webpages/musicbutton.swf" quality="High" pluginspage="http://www.macromedia.com/shockwave/download/index.cgi?P1_Prod_Version=ShockwaveFlash" type="application/x-shockwave-flash" width="100" height="22">
-            </object>
-</p>
-          <p>
-            <object classid="clsid:D27CDB6E-AE6D-11cf-96B8-444553540000" codebase="http://download.macromedia.com/pub/shockwave/cabs/flash/swflash.cab#version=5,0,0,0" width="100" height="22">
-              <param name="movie" value="Webpages/interestsbutton.swf">
-              <param name="quality" value="High">
-              <embed src="Webpages/interestsbutton.swf" quality="High" pluginspage="http://www.macromedia.com/shockwave/download/index.cgi?P1_Prod_Version=ShockwaveFlash" type="application/x-shockwave-flash" width="100" height="22">
-            </object>
-          </p>
-          <p>              
-            <object classid="clsid:D27CDB6E-AE6D-11cf-96B8-444553540000" codebase="http://download.macromedia.com/pub/shockwave/cabs/flash/swflash.cab#version=5,0,0,0" width="100" height="22">
-              <param name="movie" value="Webpages/resumebutton.swf">
-              <param name="quality" value="High">
-              <embed src="Webpages/resumebutton.swf" quality="High" pluginspage="http://www.macromedia.com/shockwave/download/index.cgi?P1_Prod_Version=ShockwaveFlash" type="application/x-shockwave-flash" width="100" height="22">
-            </object>
-          </p>          
-          <p>
-            <object classid="clsid:D27CDB6E-AE6D-11cf-96B8-444553540000" codebase="http://download.macromedia.com/pub/shockwave/cabs/flash/swflash.cab#version=5,0,0,0" width="100" height="22">
-              <param name="movie" value="Webpages/linksbutton.swf">
-              <param name="quality" value="High">
-              <embed src="Webpages/linksbutton.swf" quality="High" pluginspage="http://www.macromedia.com/shockwave/download/index.cgi?P1_Prod_Version=ShockwaveFlash" type="application/x-shockwave-flash" width="100" height="22">
-            </object>
-          </p>
-          <p>              
-            <object classid="clsid:D27CDB6E-AE6D-11cf-96B8-444553540000" codebase="http://download.macromedia.com/pub/shockwave/cabs/flash/swflash.cab#version=5,0,0,0" width="100" height="22">
-              <param name="movie" value="Webpages/contactbutton.swf">
-              <param name="quality" value="High">
-              <embed src="Webpages/contactbutton.swf" quality="High" pluginspage="http://www.macromedia.com/shockwave/download/index.cgi?P1_Prod_Version=ShockwaveFlash" type="application/x-shockwave-flash" width="100" height="22">
-            </object>
-          </p>          </td>
-      </tr>
-    </tbody></table></td>
-    <td width="430" valign="top"><table width="429" height="180" border="0">
-      <tbody><tr>
-        <td height="115" valign="top"><p><font face="Times New Roman, Times, serif"><strong>A message from Ben: </strong>Thank you for visiting BenThompson.com. It will be under construction for quite a while as I build it, however, check back often as new updates will be made daily. You will be able to see lots of pictures, videos, and additional goodies as the site grows. Please send me comments via the contact section.&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </font></p>          </td>
-      </tr>
-      <tr>
-        <td height="59" valign="top"><b><font color="#FF0000">Update: </font>
-		</b>&nbsp;I saw a tornado from my condo Saturday night!&nbsp; Below is a 
-		picture of the tornado taken by someone else in my building.&nbsp; Click 
-		on the pic to go to the news story about it.</td>
-      </tr>
-    </tbody></table>      <p align="center">
-	<a target="_blank" href="http://www.nbc6.net/weather/4958181/detail.html">
-	<img border="0" src="Pictures/tornado2.jpg" width="208" height="153"></a></p>
-	</td>
-    <td width="280" valign="top">
-	<table width="280" border="1" bordercolor="#000080" cellspacing="0" cellpadding="0" height="117">
-      <tbody><tr>
-        <td width="176" height="26" style="border-left-style: solid; border-left-width: 1px; border-right-style: none; border-right-width: medium; border-top-style: solid; border-top-width: 1px; border-bottom-style: none; border-bottom-width: medium" valign="top"><p align="center">
-
-
-</body></html>
